@@ -4,7 +4,12 @@ files:
   - source: /
     destination: /var/www/html
 hooks:
+  BeforeInstall:
+    - location: check_and_handle_existing_files.sh
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: restart_server.sh
       timeout: 300
       runas: root
+
